@@ -1,0 +1,140 @@
+// 自动添加 -webkit- 目前只要 -webkit- 如果后续需要 -moz- -o- -ms- 再加即可
+@mixin prefix($k, $v...) {
+    #{$k}: $v;
+    -webkit-#{$k}: $v;
+}
+
+@mixin prefixv($k, $v) {
+    #{$k}: $v;
+    #{$k}: -webkit-#{$v};
+}
+
+// Gradients
+@mixin directional-gradient($color-from, $color-to, $deg) {
+    @include prefixv(background-image, linear-gradient($deg, $color-from 0%, $color-to 100%));
+}
+
+// border-box
+@mixin border-box {
+    @include prefix(box-sizing, border-box);
+}
+
+// 阴影
+@mixin box-shadow($shadow...) {
+    @include prefix(box-shadow, $shadow);
+}
+
+// 禁用选中文字
+@mixin user-select($t: none) {
+    -khtml-user-select: $t;
+    @include prefix(user-select, $t);
+}
+
+// flex 布局
+@mixin flex-parent {
+    @include prefixv(display, box);
+    @include prefixv(display, flex);
+}
+
+@mixin flex($i: 1) {
+    display: block;
+    @include prefix(box-flex, $i);
+    @include prefix(flex, $i);
+}
+
+// box 布局
+@mixin box {
+    @include prefixv(display, box);
+}
+
+@mixin box-orient {
+    @include prefix(box-orient, vertical);
+}
+
+// 高度
+@mixin height($h: 1em) {
+    height: $h;
+    line-height: $h - .1;
+}
+
+// clearfix 清除浮动
+@mixin clearfix($extend: true) {
+    @if $extend {
+        @extend %clearfix;
+    }
+    @else {
+        &::before,
+        &::after {
+            content: "";
+            display: table;
+        }
+        &::after {
+            clear: both;
+        }
+    }
+}
+
+%clearfix {
+    @include clearfix(false);
+}
+
+// 字符串截断
+@mixin ellipsis($i: 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $i;
+    -webkit-box-orient: vertical;
+    @include prefixv(display, box);
+}
+
+// 动画
+@mixin transform($transform...) {
+    @include prefix(transform, $transform);
+}
+
+@mixin transition($transition...) {
+    @include prefix(transition, $transition);
+}
+
+@mixin keyframes($a) {
+    @-webkit-keyframes #{$a} {
+        @content;
+    }
+    @keyframes #{$a} {
+        @content;
+    }
+}
+
+@mixin animation($v...) {
+    animation: $v;
+    -webkit-animation: $v;
+}
+
+// flexible.js pxToRem
+@function rem($val) {
+    @return $val/64 * 1rem;;
+}
+
+@function rem750($val) {
+    @return $val/75 * 1rem;
+}
+
+@function rem1080($val) {
+    @return $val/108 * 1rem;
+}
+
+// 生成 iconfont 路径
+@mixin iconfont($level: 2, $name: 'iconfont') {
+    $l: '';
+    @for $i from 1 through $level {
+        $l: '../' + $l;
+    }
+    @font-face {
+        font-family: $name;
+        src: url($l + 'font/' + $name + '.eot');
+        src: url($l + 'font/' + $name + '.eot') format('embedded-opentype'), /* IE6-IE8 */
+        url($l + 'font/' + $name + '.woff') format('woff'), /* chrome, firefox */
+        url($l + 'font/' + $name + '.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+        url($l + 'font/' + $name + '.svg') format('svg');
+    }
+}
