@@ -25,26 +25,20 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      msg: '哈哈哈',
+      msg: 'sass',
     };
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style lang="scss" scoped="" type="text/css">
+$color-main:#ff0000;
+$color:#ffffff;
+
+.hello{
+  display:flex;
+  background-color:$color-main;
+  color:$color;
 }
 </style>

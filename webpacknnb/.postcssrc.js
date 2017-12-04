@@ -4,7 +4,7 @@ module.exports = {
   "plugins": {
     // to edit target browsers: use "browserslist" field in package.json
     "postcss-import": {},
-    "autoprefixer": {},
+    "autoprefixer": {browsers: 'safari >= 9, ie >= 11'},
     "postcss-cssnext":{}
   }
 }

@@ -124,17 +124,17 @@
 }
 
 // 生成 iconfont 路径
-@mixin iconfont($level: 2, $name: 'iconfont') {
-    $l: '';
-    @for $i from 1 through $level {
-        $l: '../' + $l;
-    }
+@mixin iconfont($font_path: '~@/assets/img/', $name: 'iconfont') {
+    $l: $font_path;
     @font-face {
         font-family: $name;
-        src: url($l + 'font/' + $name + '.eot');
-        src: url($l + 'font/' + $name + '.eot') format('embedded-opentype'), /* IE6-IE8 */
-        url($l + 'font/' + $name + '.woff') format('woff'), /* chrome, firefox */
-        url($l + 'font/' + $name + '.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-        url($l + 'font/' + $name + '.svg') format('svg');
+        src: url($l + 'fonts/' + $name + '.eot');
+        src: url($l + 'fonts/' + $name + '.eot') format('embedded-opentype'), /* IE6-IE8 */
+        url($l + 'fonts/' + $name + '.woff') format('woff'), /* chrome, firefox */
+        url($l + 'fonts/' + $name + '.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+        url($l + 'fonts/' + $name + '.svg') format('svg');
+        font-weight    : 400;
+        font-style: normal;
+        text-rendering : optimizeLegibility;
     }
 }

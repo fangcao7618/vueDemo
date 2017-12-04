@@ -1,6 +1,5 @@
 // 公用样式，所有正常页面必须引用该样式
 @charset 'utf-8';
-@import '_variables';
 @import '_mixins';
 body,
 div,
@@ -36,14 +35,18 @@ body {
 }
 
 body {
-    font-family: 'Helvetica Neue', Helvetica, STHeiti, sans-serif;
+    // font-family: 'Helvetica Neue', Helvetica, STHeiti, sans-serif;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     overflow-x: hidden;
     /* 关闭字体自动调整大小 */
     -webkit-text-size-adjust: none;
     /* 滚动顺畅 */
     -webkit-overflow-scrolling: touch;
     /* 主颜色 */
-    color: $theme-default;
+    /* 抗锯齿渲染 */
+    //none：对低像素的文本比较好  subpixel-antialiased：默认值  antialiased：抗锯齿很好 
+    -webkit-font-smoothing: antialiased;/*chrome、safari*/
+    -moz-osx-font-smoothing: grayscale;/*firefox*/
 }
 
 a {
@@ -106,11 +109,4 @@ i {
 
 .fr {
     float: right;
-}
-
-
-/* === 主题 === */
-
-a {
-    color: $theme-main;
 }
