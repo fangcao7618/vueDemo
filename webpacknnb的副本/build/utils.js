@@ -17,18 +17,18 @@ const merge = require('webpack-merge');
 const env = process.env.NODE_ENV;
 
 
-// 多入口配置
+//多入口配置
 // 通过glob模块读取pages文件夹下的所有对应文件夹下的js后缀文件，如果该文件存在
 // 那么就作为入口处理
 exports.entries = function () {
-  const entryFiles = glob.sync(PAGE_PATH + '/*/*.js');
-  const map = {};
+  var entryFiles = glob.sync(PAGE_PATH + '/*/*.js');
+  var map = {};
   entryFiles.forEach((filePath) => {
-    const filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'));
+    var filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'));
     map[filename] = filePath;
   });
   return map;
-};
+}
 
 
 //多页面输出配置
@@ -73,8 +73,8 @@ exports.assetsPath = function (_path) {
   } else if (env === 'production') {
     assetsSubDirectory = config.build.assetsSubDirectory;
   }
-  return path.posix.join(assetsSubDirectory, _path);
-};
+  return path.posix.join(assetsSubDirectory, _path)
+}
 
 exports.cssLoaders = function (options) {
   options = options || {};
