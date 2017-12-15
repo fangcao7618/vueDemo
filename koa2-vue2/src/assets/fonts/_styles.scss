@@ -1,0 +1,42 @@
+@include iconfont('~@/assets/img/','icomoon');
+
+  [class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-back:before {
+    content: "\e900";
+    color: #616161;
+  }
+  .icon-success .path1:before {
+    content: "\e901";
+    color: rgb(23, 115, 208);
+  }
+  .icon-success .path2:before {
+    content: "\e902";
+    margin-left: -1em;
+    color: rgb(22, 111, 201);
+  }
+  .icon-del:before {
+    content: "\e903";
+    color: #1773d0;
+  }
+  .icon-edit:before {
+    content: "\e904";
+    color: #1773d0;
+  }
+  .icon-dingwei:before {
+    content: "\e905";
+    color: #1773d0;
+  }
+  
